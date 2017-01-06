@@ -25,6 +25,9 @@
         <md-icon md-svg-src="{{ul.selected.avatar}}" class="avatar"></md-icon>
         <h2>{{ul.selected.name}}</h2>
         <p>{{ul.selected.content}}</p>
+        <md-button class="share" md-no-ink aria-label="Share" ng-click="ul.makeContact(ul.selected)">
+            <md-icon md-svg-src="share"></md-icon>
+        </md-button>
     </md-content>
 </div>
 
@@ -39,7 +42,8 @@
 <script>
     angular.module('MyApp', ['ngMaterial', 'users'])
         .config(function ($mdIconProvider) {
-            $mdIconProvider.defaultIconSet('./svg/avatars.svg', 128)
+            $mdIconProvider.defaultIconSet('./svg/avatars.svg', 128);
+            $mdIconProvider.icon('share', './svg/share.svg', 24);
         })
 </script>
 </body>
