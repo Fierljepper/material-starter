@@ -6,13 +6,16 @@
 </head>
 <body ng-app="MyApp" layout="column" ng-controller="UserController as ul">
 
-<md-toolbar>
+<md-toolbar layout="row">
+    <md-button class="menu" ng-click="ul.toggleList();" hide-gt-sm>
+        <md-icon md-svg-icon="menu"></md-icon>
+    </md-button>
     <h3>Angular Material Starter</h3>
 </md-toolbar>
 
 <div class="container" layout="row" flex>
-    <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
-        <md-list>
+    <md-sidenav class="md-whiteframe-4dp" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left">
+        <md-list ng-click="ul.toggleList()">
             <md-list-item ng-repeat="u in ul.users">
                 <md-button ng-click="ul.selectUser(u)">
                     <md-icon md-svg-src="{{u.avatar}}" class="avatar"></md-icon>
@@ -26,7 +29,7 @@
         <h2>{{ul.selected.name}}</h2>
         <p>{{ul.selected.content}}</p>
         <md-button class="share" md-no-ink aria-label="Share" ng-click="ul.makeContact(ul.selected)">
-            <md-icon md-svg-src="share"></md-icon>
+            <md-icon md-svg-icon="share"></md-icon>
         </md-button>
     </md-content>
 </div>
@@ -44,6 +47,7 @@
         .config(function ($mdIconProvider) {
             $mdIconProvider.defaultIconSet('./svg/avatars.svg', 128);
             $mdIconProvider.icon('share', './svg/share.svg', 24);
+            $mdIconProvider.icon('menu', './svg/menu.svg', 24);
         })
 </script>
 </body>
